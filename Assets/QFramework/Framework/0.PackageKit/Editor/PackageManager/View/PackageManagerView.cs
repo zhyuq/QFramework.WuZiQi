@@ -31,7 +31,10 @@ namespace QFramework.PackageKit
         public List<string> Categories
         {
             get { return null; }
-            set { mCategoriesSelectorView.Menus(value); }
+            set
+            {
+                mCategoriesSelectorView.Menus(value);
+            }
         }
 
         public List<PackageRepository> PackageRepositories

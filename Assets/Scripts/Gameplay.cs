@@ -72,7 +72,7 @@ namespace QFramework.WuZiQi
 
             var mousePos = Vector2.zero;
             
-            // 鼠标的剪辑输入事件处理
+            // 鼠标的点击输入事件处理
             this.Repeat()
                 .Until(() => Input.GetMouseButton(0) && !isGameOver) // 使用 Button 好像体验更好一点
                 .Event(() => {

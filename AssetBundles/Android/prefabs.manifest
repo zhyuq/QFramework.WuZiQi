@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 727369188
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e23766125e0975c16a47617420c2f1a8
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 68fbd06ae3db377db0f918b6fcbd83f2
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ad3fb9624d8ac7842841453317c88c8d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Art/Prefabs/BlackChess.prefab
+- Assets/Art/Prefabs/GameplayRoot.prefab
+- Assets/Art/Prefabs/WhiteChess.prefab
+Dependencies:
+- D:/Workspace/WuZiQi/AssetBundles/Android/uisprites

@@ -37,14 +37,14 @@ namespace QFramework.WuZiQi
         public static bool IsWin(int row, int col, Gameplay.ChessPosStatus chessPosStatus,
             List<List<Gameplay.ChessPosStatus>> snapshotMap)
         {
-            return Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => c < 15, 0, 1) ||
+            return Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => c < 14, 0, 1) ||
                    Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => c >= 0, 0, -1) ||
                    Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0, -1, 0) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 15, 1, 0) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0 && c < 15, -1, 1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 15 && c < 15, 1, 1) ||
+                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14, 1, 0) ||
+                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0 && c < 14, -1, 1) ||
+                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14 && c < 14, 1, 1) ||
                    Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0 && c >= 0, -1, -1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 15 && c >= 0, 1, -1);
+                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14 && c >= 0, 1, -1);
 
         }
 
@@ -60,7 +60,15 @@ namespace QFramework.WuZiQi
         /// <param name="rowIncrease"></param>
         /// <param name="colIncrease"></param>
         /// <returns></returns>
-        static bool Cotinious5InLine(int row, int col, Gameplay.ChessPosStatus chessPosStatus, List<List<Gameplay.ChessPosStatus>> snapshotMap,int count,Func<int,int,bool> borderCondition,int rowIncrease,int colIncrease)
+        static bool Cotinious5InLine(
+            int row, 
+            int col, 
+            Gameplay.ChessPosStatus chessPosStatus, 
+            List<List<Gameplay.ChessPosStatus>> snapshotMap,
+            int count,
+            Func<int,int,bool> borderCondition,
+            int rowIncrease,
+            int colIncrease)
         {
             if (borderCondition(row,col) && snapshotMap[row][col] == chessPosStatus)
             {
