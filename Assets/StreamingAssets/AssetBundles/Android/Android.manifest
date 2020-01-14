@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3923650570
+CRC: 4080908871
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -12,4 +12,7 @@ AssetBundleManifest:
         Dependency_0: uisprites
     Info_2:
       Name: uisprites
+      Dependencies: {}
+    Info_3:
+      Name: uihomepanel_prefab
       Dependencies: {}

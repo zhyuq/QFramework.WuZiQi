@@ -26,6 +26,11 @@ namespace QFramework.WuZiQi
             return false;
         }
 
+        static bool BorderCondition(int row, int col)
+        {
+            return row >= 0 && row < 15 && col >= 0 && col < 15;
+        }
+
         /// <summary>
         /// 八个方向进行递归
         /// </summary>
@@ -37,19 +42,54 @@ namespace QFramework.WuZiQi
         public static bool IsWin(int row, int col, Gameplay.ChessPosStatus chessPosStatus,
             List<List<Gameplay.ChessPosStatus>> snapshotMap)
         {
-            return Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => c < 14, 0, 1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => c >= 0, 0, -1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0, -1, 0) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14, 1, 0) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0 && c < 14, -1, 1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14 && c < 14, 1, 1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r >= 0 && c >= 0, -1, -1) ||
-                   Cotinious5InLine(row, col, chessPosStatus, snapshotMap, 0, (c, r) => r < 14 && c >= 0, 1, -1);
 
+            // 上下判断
+            var upCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, 0, 1);
+            var downCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, 0, -1);
+
+            // 因为都包括自己
+            if (upCount + downCount >= 6)
+            {
+                return true;
+            }
+
+            // 左右判断
+            var leftCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, -1, 0);
+            var rightCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, 1, 0);
+
+            if (leftCount + rightCount >= 6)
+            {
+                return true;
+            }
+
+
+            // 左上和右下
+            var upLeftCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, -1,
+                1);
+            var downRightCount =
+                ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, 1, -1);
+
+            if (upLeftCount + downRightCount >= 6)
+            {
+                return true;
+            }
+
+            // 右上和左下
+            var upRightCount =
+                ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, 1, 1);
+            var downLeftCount = ContiniousCount(row, col, chessPosStatus, snapshotMap, 0, BorderCondition, -1, -1);
+
+
+            if (upRightCount + downLeftCount >= 6)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
-        /// 判断一条线内是否是连续的
+        /// 判断这个防线是有几个连续的
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
@@ -60,32 +100,26 @@ namespace QFramework.WuZiQi
         /// <param name="rowIncrease"></param>
         /// <param name="colIncrease"></param>
         /// <returns></returns>
-        static bool Cotinious5InLine(
-            int row, 
-            int col, 
-            Gameplay.ChessPosStatus chessPosStatus, 
+        static int ContiniousCount(
+            int row,
+            int col,
+            Gameplay.ChessPosStatus chessPosStatus,
             List<List<Gameplay.ChessPosStatus>> snapshotMap,
             int count,
-            Func<int,int,bool> borderCondition,
+            Func<int, int, bool> borderCondition,
             int rowIncrease,
             int colIncrease)
         {
-            if (borderCondition(row,col) && snapshotMap[row][col] == chessPosStatus)
+            if (borderCondition(row, col) && snapshotMap[row][col] == chessPosStatus)
             {
                 count++;
 
-                if (count == 5)
-                {
-                    return true;
-                }
-                
-                return Cotinious5InLine(row + rowIncrease, col + colIncrease, chessPosStatus, snapshotMap, count,borderCondition,rowIncrease,colIncrease);
+
+                return ContiniousCount(row + rowIncrease, col + colIncrease, chessPosStatus, snapshotMap, count,
+                    borderCondition, rowIncrease, colIncrease);
             }
 
-            return false;
+            return count;
         }
-        
-
-     
     }
 }

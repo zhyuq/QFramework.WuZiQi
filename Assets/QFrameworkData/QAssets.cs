@@ -23,6 +23,11 @@ namespace QAssetBundle
         public const string BundleName = "uigameover_prefab";
         public const string UIGAMEOVER = "uigameover";
     }
+    public class Uihomepanel_prefab
+    {
+        public const string BundleName = "uihomepanel_prefab";
+        public const string UIHOMEPANEL = "uihomepanel";
+    }
     public class Uisprites
     {
         public const string BundleName = "uisprites";
