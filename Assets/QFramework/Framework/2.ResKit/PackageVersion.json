@@ -1,1 +1,1 @@
-{"Id":"","Version":"v0.8.7","Type":0,"AccessRight":0,"DownloadUrl":"","InstallPath":"Assets/QFramework/Framework/2.ResKit/","DocUrl":"http://liangxiegame.com","Readme":{"version":"v0.8.7","content":"修复 ResLoader 造成的问题","author":"liangxie","date":"2020 年 01 月 07 日 21:53","PackageId":""}}
+{"Id":"","Version":"v0.9.0","Type":0,"AccessRight":0,"DownloadUrl":"","InstallPath":"Assets/QFramework/Framework/2.ResKit/","DocUrl":"http://lianxiegame.com","Readme":{"version":"v0.9.0","content":"支持其他类型的数据，比如 json","author":"liangxie","date":"2020 年 01 月 16 日 20:15","PackageId":""}}

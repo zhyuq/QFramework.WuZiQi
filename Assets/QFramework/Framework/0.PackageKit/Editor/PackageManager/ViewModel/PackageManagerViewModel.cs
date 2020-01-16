@@ -27,6 +27,7 @@ namespace QFramework.PackageKit
         public override void OnInit()
         {
             PackageRepositories = Model.Repositories.OrderBy(p => p.name).ToList();
+
             UpdateCategoriesFromModel();
 
             Server.GetAllRemotePackageInfoV5((list, categories) =>

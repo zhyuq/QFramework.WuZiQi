@@ -33,7 +33,8 @@ namespace QFramework.PackageKit
             get { return null; }
             set
             {
-                mCategoriesSelectorView.Menus(value);
+                mCategoriesSelectorView.Menus(value); 
+                Container.Resolve<PackageKitWindow>().Repaint();
             }
         }
 
@@ -111,6 +112,7 @@ namespace QFramework.PackageKit
                 .To(vm => vm.PackageRepositories);
             
             bindingSet.Build();
+            
         }
         
         private ScrollLayout mRepositoryList = null;

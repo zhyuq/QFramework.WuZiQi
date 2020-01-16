@@ -73,15 +73,7 @@ namespace QFramework
         {
             get { return "/AssetBundles/" + GetPlatformName() + "/"; }
         }
-
-        /// <summary>
-        /// AssetBundle 配置路径
-        /// </summary>
-        public static string EXPORT_ASSETBUNDLE_CONFIG_FILENAME
-        {
-            get { return "asset_bindle_config.bin"; }
-        }
-
+        
         #endregion
         
         public static string GetPlatformName()
