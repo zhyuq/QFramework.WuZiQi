@@ -1,4 +1,4 @@
-// Generate Id:00ab730a-ddd8-44e2-9c0e-f1596aa8db33
+// Generate Id:3b2f3621-8c1d-40d3-b2dc-d8b944661769
 using UnityEngine;
 
 namespace QFramework.WuZiQi
