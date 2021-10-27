@@ -95,7 +95,7 @@ namespace QFramework.WuZiQi
                 }).Begin();
             
             
-            TypeEventSystem.Register<GameResetEvent>(ResetGame);
+            TypeEventSystem.Global.Register<GameResetEvent>(ResetGame);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace QFramework.WuZiQi
 
         private void OnDestroy()
         {
-            TypeEventSystem.UnRegister<GameResetEvent>(ResetGame);
+            TypeEventSystem.Global.UnRegister<GameResetEvent>(ResetGame);
 
             mResLoader.Recycle2Cache();
             mResLoader = null;
@@ -208,7 +208,7 @@ namespace QFramework.WuZiQi
             {
                 isGameOver = true;
 
-                TypeEventSystem.Send(new GameOverEvent()
+                TypeEventSystem.Global.Send(new GameOverEvent()
                 {
                     IsBlackWin = mTurn == ChessPosStatus.Black
                 });

@@ -11,7 +11,7 @@ namespace QFramework
 	{
 		void Start()
 		{
-			TypeEventSystem.Register<IGameStateEvent>(OnGameStateEvent);
+			TypeEventSystem.Global.Register<IGameStateEvent>(OnGameStateEvent);
 			
 		}
 
@@ -19,12 +19,12 @@ namespace QFramework
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
-				TypeEventSystem.Send<IGameStateEvent>(new GameStartEvent());
+				TypeEventSystem.Global.Send<IGameStateEvent>(new GameStartEvent());
 			}
 			
 			if (Input.GetMouseButtonDown(1))
 			{
-				TypeEventSystem.Send<IGameStateEvent>(new GamePauseEvent());
+				TypeEventSystem.Global.Send<IGameStateEvent>(new GamePauseEvent());
 			}
 		}
 
@@ -43,7 +43,7 @@ namespace QFramework
 
 		private void OnDestroy()
 		{
-			TypeEventSystem.UnRegister<IGameStateEvent>(OnGameStateEvent);
+			TypeEventSystem.Global.UnRegister<IGameStateEvent>(OnGameStateEvent);
 		}
 	}
 

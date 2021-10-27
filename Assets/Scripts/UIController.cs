@@ -12,12 +12,12 @@ namespace QFramework.WuZiQi
 
 		void Start()
 		{
-			TypeEventSystem.Register<GameOverEvent>(OnGameOver);
+			TypeEventSystem.Global.Register<GameOverEvent>(OnGameOver);
 		}
 
 		void OnGameOver(GameOverEvent gameOverEvent)
 		{
-			UIMgr.OpenPanel<UIGameOver>(new UIGameOverData()
+			UIKit.OpenPanel<UIGameOver>(new UIGameOverData()
 			{
 				BlackWin = gameOverEvent.IsBlackWin
 			});
@@ -25,7 +25,7 @@ namespace QFramework.WuZiQi
 
 		private void OnDestroy()
 		{
-			TypeEventSystem.UnRegister<GameOverEvent>(OnGameOver);
+			TypeEventSystem.Global.UnRegister<GameOverEvent>(OnGameOver);
 		}
 	}
 }

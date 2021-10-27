@@ -55,7 +55,7 @@ namespace QFramework.WuZiQi
                     // 关闭自己
                     CloseSelf();
                     // 重新开始游戏
-                    TypeEventSystem.Send<GameResetEvent>();
+                    TypeEventSystem.Global.Send(new GameStartEvent());
 
                 })
                 .Begin();
