@@ -85,6 +85,8 @@ namespace QFramework
             get { return "/AssetBundles/" + AssetBundlePathHelper.GetPlatformName() + "/"; }
         }
 
+        public static bool SimulateAssetBundleInEditor { get; set; }
+
         #endregion
     }
 }
